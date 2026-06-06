@@ -57,7 +57,6 @@
             font-weight: 300;
         }
 
-        /* --- CONTENEDOR DE LAS 3 FOTOS --- */
         .photos-container {
             display: flex;
             justify-content: center;
@@ -87,7 +86,6 @@
             display: block;
         }
 
-        /* Foto central más grande */
         .photo-frame.main {
             width: 240px;
             height: 240px;
@@ -176,6 +174,12 @@
 
         .form-group { margin-bottom: 20px; }
 
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
         label {
             display: block;
             margin-bottom: 10px;
@@ -260,6 +264,12 @@
             color: var(--color-acento-claro);
         }
 
+        .memory-relationship {
+            font-style: italic;
+            color: var(--color-acento);
+            margin-left: 10px;
+        }
+
         .loading { text-align: center; padding: 30px; color: var(--color-texto-claro); }
 
         footer {
@@ -281,6 +291,7 @@
             .photo-frame { width: 120px; height: 120px; }
             .photo-frame.main { width: 180px; height: 180px; }
             .hero-img { width: 80px; height: 80px; }
+            .form-row { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -291,7 +302,6 @@
         <div class="dates">17 de Enero, 2001 &mdash; 24 de Mayo, 2026</div>
     </header>
 
-    <!-- TRES FOTOS: 1 a la izquierda, Emiliano en el centro, 2 a la derecha -->
     <section class="photos-container">
         <div class="photo-frame">
             <img src="1.jpeg.jpeg" alt="Foto 1">
@@ -306,7 +316,7 @@
 
     <section class="heroes-section">
         <div class="container">
-            <h2 class="section-title">Héroes Favoritos</h2>
+            <h2 class="section-title"> Sus Héroes Favoritos, nos recordaran a ti</h2>
             <div class="heroes-grid">
                 
                 <div class="hero-card">
@@ -342,9 +352,15 @@
             <h2 class="section-title">Recuerdos con Emiliano</h2>
             
             <form id="memoryForm">
-                <div class="form-group">
-                    <label for="authorName">Tu Nombre</label>
-                    <input type="text" id="authorName" placeholder="¿Quién escribe?" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="authorName">Nombre</label>
+                        <input type="text" id="authorName" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="relationship">Parentesco</label>
+                        <input type="text" id="relationship" placeholder="Ej: Hermano, Primo, Amigo">
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="memoryText">Tu Recuerdo</label>
@@ -389,10 +405,12 @@
             e.preventDefault();
             
             const authorInput = document.getElementById('authorName');
+            const relationshipInput = document.getElementById('relationship');
             const textInput = document.getElementById('memoryText');
             const submitBtn = document.getElementById('submitBtn');
 
             const author = authorInput.value;
+            const relationship = relationshipInput.value;
             const text = textInput.value;
             const date = new Date().toLocaleDateString('es-ES', {
                 year: 'numeric', month: 'long', day: 'numeric'
@@ -403,10 +421,15 @@
 
             try {
                 await addDoc(collection(db, "memorias"), {
-                    author: author, text: text, date: date, createdAt: new Date()
+                    author: author,
+                    relationship: relationship,
+                    text: text,
+                    date: date,
+                    createdAt: new Date()
                 });
 
                 authorInput.value = '';
+                relationshipInput.value = '';
                 textInput.value = '';
                 await loadMemories();
 
@@ -436,11 +459,15 @@
                 let html = '';
                 querySnapshot.forEach((doc) => {
                     const memory = doc.data();
+                    const relationshipHtml = memory.relationship ? `<span class="memory-relationship">(${escapeHtml(memory.relationship)})</span>` : '';
                     html += `
                         <div class="memory-card">
                             <p class="memory-text">${escapeHtml(memory.text)}</p>
                             <div class="memory-meta">
-                                <span class="memory-author">${escapeHtml(memory.author)}</span>
+                                <span>
+                                    <span class="memory-author">${escapeHtml(memory.author)}</span>
+                                    ${relationshipHtml}
+                                </span>
                                 <span>${memory.date}</span>
                             </div>
                         </div>
