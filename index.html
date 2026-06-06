@@ -15,7 +15,6 @@
         :root {
             --color-fondo: #0d0d0d;
             --color-panel: #1a1a1a;
-            --color-panel-hover: #252525;
             --color-acento: #6b6b6b;
             --color-acento-claro: #a0a0a0;
             --color-texto: #e0e0e0;
@@ -23,11 +22,7 @@
             --color-borde: #333333;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Montserrat', sans-serif;
@@ -43,7 +38,6 @@
             font-weight: 600;
         }
 
-        /* --- CABECERA --- */
         header {
             background: linear-gradient(180deg, #000000 0%, var(--color-panel) 100%);
             color: var(--color-texto);
@@ -63,10 +57,8 @@
             font-size: 1.3rem;
             color: var(--color-texto-claro);
             font-weight: 300;
-            letter-spacing: 2px;
         }
 
-        /* --- FOTO --- */
         .photo-section {
             text-align: center;
             margin: -60px auto 60px;
@@ -92,7 +84,6 @@
             object-fit: cover;
         }
 
-        /* --- CONTENIDO GENERAL --- */
         .container {
             max-width: 1000px;
             margin: 0 auto;
@@ -112,10 +103,7 @@
             font-size: 1.5rem;
         }
 
-        /* --- HEROES --- */
-        .heroes-section {
-            padding: 60px 0;
-        }
+        .heroes-section { padding: 60px 0; }
 
         .heroes-grid {
             display: grid;
@@ -135,7 +123,6 @@
         .hero-card:hover {
             transform: translateY(-5px);
             border-color: var(--color-acento-claro);
-            box-shadow: 0 10px 30px rgba(160, 160, 160, 0.15);
         }
 
         .hero-img {
@@ -145,6 +132,7 @@
             object-fit: cover;
             margin-bottom: 20px;
             border: 2px solid var(--color-borde);
+            background: #333;
         }
 
         .hero-name {
@@ -161,7 +149,6 @@
             line-height: 1.5;
         }
 
-        /* --- MEMORIAS --- */
         .memory-section {
             background-color: var(--color-panel);
             padding: 70px 20px;
@@ -174,9 +161,7 @@
             margin: 0 auto;
         }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+        .form-group { margin-bottom: 20px; }
 
         label {
             display: block;
@@ -197,7 +182,6 @@
             font-size: 1rem;
             background-color: var(--color-fondo);
             color: var(--color-texto);
-            transition: border-color 0.3s;
         }
 
         input:focus, textarea:focus {
@@ -205,10 +189,7 @@
             border-color: var(--color-acento);
         }
 
-        textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
+        textarea { resize: vertical; min-height: 120px; }
 
         button {
             background-color: transparent;
@@ -229,17 +210,9 @@
             color: var(--color-fondo);
         }
 
-        button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
+        button:disabled { opacity: 0.5; cursor: not-allowed; }
 
-        /* Lista de Memorias */
-        .memories-list {
-            margin-top: 30px;
-            display: grid;
-            gap: 20px;
-        }
+        .memories-list { margin-top: 30px; display: grid; gap: 20px; }
 
         .section-subtitle {
             text-align: center;
@@ -274,14 +247,8 @@
             color: var(--color-acento-claro);
         }
 
-        /* Loading */
-        .loading {
-            text-align: center;
-            padding: 30px;
-            color: var(--color-texto-claro);
-        }
+        .loading { text-align: center; padding: 30px; color: var(--color-texto-claro); }
 
-        /* Footer */
         footer {
             background-color: #000000;
             color: #555;
@@ -295,77 +262,62 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive */
         @media (max-width: 600px) {
-            header h1 {
-                font-size: 2.2rem;
-            }
-            .photo-frame {
-                width: 180px;
-                height: 180px;
-            }
+            header h1 { font-size: 2.2rem; }
+            .photo-frame { width: 180px; height: 180px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- 1. ENCABEZADO -->
     <header>
         <h1>Emiliano Rendon</h1>
         <div class="dates">17 de Enero, 2001 &mdash; 24 de Mayo, 2026</div>
     </header>
 
-    <!-- 2. FOTO -->
     <section class="photo-section">
         <div class="photo-frame">
-            <img src="emiliano.jpg" alt="Foto de Emiliano Rendon" onerror="this.src='https://placehold.co/400x400/1a1a1a/a0a0a0?text=Foto'">
+            <img src="emiliano.jpg" alt="Foto de Emiliano Rendon">
         </div>
     </section>
 
-    <!-- 3. HEROES FAVORITOS -->
     <section class="heroes-section">
         <div class="container">
             <h2 class="section-title">Héroes Favoritos</h2>
             <div class="heroes-grid">
                 
-                <!-- Superman -->
                 <div class="hero-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/3/35/Superman_Man_of_Steel.jpg" alt="Superman" class="hero-img">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3/3561.jpg" alt="Superman" class="hero-img">
                     <div class="hero-name">Superman</div>
                     <p class="hero-quote">"Nos recordará a la esperanza que siempre nos brindaste."</p>
                 </div>
 
-                <!-- Green Lantern -->
                 <div class="hero-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/8/8f/Green_Lantern_poster.jpg" alt="Green Lantern" class="hero-img">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2163/2163343.jpg" alt="Green Lantern" class="hero-img">
                     <div class="hero-name">Green Lantern</div>
-                    <p class="hero-quote">"Tu luz seguirá brillando en la noche más oscura, como la fuerza que nos daba tu presencia."</p>
+                    <p class="hero-quote">"Tu luz seguirá brillando en la noche más oscura."</p>
                 </div>
 
-                <!-- The Comedian -->
                 <div class="hero-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/5/5a/Comedian-Watchmen.png" alt="The Comedian" class="hero-img">
+                    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384034.jpg" alt="The Comedian" class="hero-img">
                     <div class="hero-name">The Comedian</div>
-                    <p class="hero-quote">"Tu humor único nos enseñó que hasta en los momentos difíciles, siempre se puede sonreír."</p>
+                    <p class="hero-quote">"Tu humor único nos enseñó a sonreír en todo momento."</p>
                 </div>
 
-                <!-- Spiderman -->
                 <div class="hero-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/en/2/2c/Spider-ManPoster.jpg" alt="Spiderman" class="hero-img">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2422/2422932.jpg" alt="Spiderman" class="hero-img">
                     <div class="hero-name">Spiderman</div>
-                    <p class="hero-quote">"Con gran poder viene gran responsabilidad, y la tuya fue dejarnos tu ejemplo."</p>
+                    <p class="hero-quote">"Con gran poder viene gran responsabilidad."</p>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- 4. MEMORIAS CON FIREBASE -->
     <section class="memory-section">
         <div class="memory-container">
             <h2 class="section-title">Recuerdos con Emiliano</h2>
             
-            <!-- Formulario -->
             <form id="memoryForm">
                 <div class="form-group">
                     <label for="authorName">Tu Nombre</label>
@@ -378,7 +330,6 @@
                 <button type="submit" id="submitBtn">Guardar Recuerdo</button>
             </form>
 
-            <!-- Lista de Memorias -->
             <div class="memories-list">
                 <div class="section-subtitle">Todos los Recuerdos</div>
                 <div id="memoriesContainer">
@@ -393,35 +344,24 @@
         <p style="margin-top:10px; color:#333;">© 2026</p>
     </footer>
 
-    <!-- FIREBASE SDK -->
     <script type="module">
-        // Importar Firebase
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
         import { getFirestore, collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
-        // ============================================
-        // *** CONFIGURACIÓN DE FIREBASE ---
-        // ============================================
         const firebaseConfig = {
             apiKey: "AIzaSyAlvRV5RpKoHlBXh8LPurAZ6Hb_oBGMCOI",
             authDomain: "emiliano-memorium.firebaseapp.com",
             projectId: "emiliano-memorium",
             storageBucket: "emiliano-memorium.firebasestorage.app",
             messagingSenderId: "474884994959",
-            appId: "1:474884994959:web:22be8f724eab97f602bdfa",
-            measurementId: "G-PMDXXQNE3S"
+            appId: "1:474884994959:web:22be8f724eab97f602bdfa"
         };
 
-        // Inicializar Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        // 1. Cargar memorias al iniciar
-        document.addEventListener('DOMContentLoaded', () => {
-            loadMemories();
-        });
+        document.addEventListener('DOMContentLoaded', () => { loadMemories(); });
 
-        // 2. Guardar nueva memoria
         document.getElementById('memoryForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             
@@ -432,29 +372,19 @@
             const author = authorInput.value;
             const text = textInput.value;
             const date = new Date().toLocaleDateString('es-ES', {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric'
+                year: 'numeric', month: 'long', day: 'numeric'
             });
 
-            // Desactivar botón mientras guarda
             submitBtn.disabled = true;
             submitBtn.textContent = 'Guardando...';
 
             try {
-                // Guardar en Firebase
                 await addDoc(collection(db, "memorias"), {
-                    author: author,
-                    text: text,
-                    date: date,
-                    createdAt: new Date()
+                    author: author, text: text, date: date, createdAt: new Date()
                 });
 
-                // Limpiar formulario
                 authorInput.value = '';
                 textInput.value = '';
-
-                // Recargar memorias
                 await loadMemories();
 
                 alert('¡Gracias! Tu recuerdo ha sido guardado.');
@@ -467,13 +397,11 @@
             }
         });
 
-        // 3. Función para cargar todas las memorias
         async function loadMemories() {
             const container = document.getElementById('memoriesContainer');
             container.innerHTML = '<div class="loading">Cargando recuerdos...</div>';
 
             try {
-                // Obtener memorias de Firebase, ordenadas por fecha
                 const q = query(collection(db, "memorias"), orderBy("createdAt", "desc"));
                 const querySnapshot = await getDocs(q);
 
@@ -482,7 +410,6 @@
                     return;
                 }
 
-                // Generar HTML para cada memoria
                 let html = '';
                 querySnapshot.forEach((doc) => {
                     const memory = doc.data();
@@ -500,19 +427,12 @@
                 container.innerHTML = html;
             } catch (error) {
                 console.error("Error al cargar: ", error);
-                container.innerHTML = '<p style="text-align:center; color:#555;">Error al cargar los recuerdos. Intenta de nuevo.</p>';
+                container.innerHTML = '<p style="text-align:center; color:#555;">Error al cargar los recuerdos.</p>';
             }
         }
 
-        // 4. Función para evitar inyección de código
         function escapeHtml(text) {
-            const map = {
-                '&': '&amp;',
-                '<': '&lt;',
-                '>': '&gt;',
-                '"': '&quot;',
-                "'": '&#039;'
-            };
+            const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
             return text.replace(/[&<>"']/g, function(m) { return map[m]; });
         }
     </script>
