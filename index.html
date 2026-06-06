@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emiliano Rendon - En Memoria</title>
+    
+    <!-- Tipografía Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- COLORES OSCUROS CON GRIS CLARO --- */
+        :root {
+            --color-fondo: #0d0d0d;
+            --color-panel: #1a1a1a;
+            --color-panel-hover: #252525;
+            --color-acento: #6b6b6b;
+            --color-acento-claro: #a0a0a0;
+            --color-texto: #e0e0e0;
+            --color-texto-claro: #a0a0a0;
+            --color-borde: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3 {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        /* --- CABECERA --- */
+        header {
+            background: linear-gradient(180deg, #000000 0%, var(--color-panel) 100%);
+            color: var(--color-texto);
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--color-borde);
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 300;
+            letter-spacing: 5px;
+        }
+
+        .dates {
+            font-size: 1.3rem;
+            color: var(--color-texto-claro);
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        /* --- FOTO --- */
+        .photo-section {
+            text-align: center;
+            margin: -60px auto 60px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .photo-frame {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 4px solid var(--color-fondo);
+            outline: 2px solid var(--color-acento);
+            background-color: var(--color-panel);
+            overflow: hidden;
+            margin: 0 auto;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+        }
+
+        .photo-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- CONTENIDO GENERAL --- */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--color-texto);
+            border-bottom: 1px solid var(--color-acento);
+            display: inline-block;
+            padding-bottom: 15px;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+        }
+
+        /* --- HEROES --- */
+        .heroes-section {
+            padding: 60px 0;
+        }
+
+        .heroes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+        }
+
+        .hero-card {
+            background-color: var(--color-panel);
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 8px;
+            border: 1px solid var(--color-borde);
+            transition: all 0.3s ease;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-acento-claro);
+            box-shadow: 0 10px 30px rgba(160, 160, 160, 0.15);
+        }
+
+        .hero-img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 2px solid var(--color-borde);
+        }
+
+        .hero-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--color-texto);
+        }
+
+        .hero-quote {
+            font-style: italic;
+            font-size: 0.85rem;
+            color: var(--color-texto-claro);
+            line-height: 1.5;
+        }
+
+        /* --- MEMORIAS --- */
+        .memory-section {
+            background-color: var(--color-panel);
+            padding: 70px 20px;
+            border-top: 1px solid var(--color-borde);
+            border-bottom: 1px solid var(--color-borde);
+        }
+
+        .memory-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--color-texto-claro);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--color-borde);
+            border-radius: 6px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            background-color: var(--color-fondo);
+            color: var(--color-texto);
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--color-acento);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        button {
+            background-color: transparent;
+            color: var(--color-texto);
+            border: 2px solid var(--color-acento-claro);
+            padding: 14px 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        button:hover {
+            background-color: var(--color-acento-claro);
+            color: var(--color-fondo);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Lista de Memorias */
+        .memories-list {
+            margin-top: 30px;
+            display: grid;
+            gap: 20px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            color: var(--color-texto-claro);
+        }
+
+        .memory-card {
+            background-color: var(--color-fondo);
+            border-left: 3px solid var(--color-acento-claro);
+            padding: 25px;
+            border-radius: 0 6px 6px 0;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .memory-text {
+            font-size: 1.05rem;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .memory-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--color-texto-claro);
+        }
+
+        .memory-author {
+            font-weight: 600;
+            color: var(--color-acento-claro);
+        }
+
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 30px;
+            color: var(--color-texto-claro);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000000;
+            color: #555;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 0.85rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            .photo-frame {
+                width: 180px;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. ENCABEZADO -->
+    <header>
+        <h1>Emiliano Rendon</h1>
+        <div class="dates">17 de Enero, 2001 &mdash; 24 de Mayo, 2026</div>
+    </header>
+
+    <!-- 2. FOTO -->
+    <section class="photo-section">
+        <div class="photo-frame">
+            <img src="emiliano.jpg" alt="Foto de Emiliano Rendon" onerror="this.src='https://placehold.co/400x400/1a1a1a/a0a0a0?text=Foto'">
+        </div>
+    </section>
+
+    <!-- 3. HEROES FAVORITOS -->
+    <section class="heroes-section">
+        <div class="container">
+            <h2 class="section-title">Héroes Favoritos</h2>
+            <div class="heroes-grid">
+                
+                <!-- Superman -->
+                <div class="hero-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/3/35/Superman_Man_of_Steel.jpg" alt="Superman" class="hero-img">
+                    <div class="hero-name">Superman</div>
+                    <p class="hero-quote">"Nos recordará a la esperanza que siempre nos brindaste."</p>
+                </div>
+
+                <!-- Green Lantern -->
+                <div class="hero-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/8/8f/Green_Lantern_poster.jpg" alt="Green Lantern" class="hero-img">
+                    <div class="hero-name">Green Lantern</div>
+                    <p class="hero-quote">"Tu luz seguirá brillando en la noche más oscura, como la fuerza que nos daba tu presencia."</p>
+                </div>
+
+                <!-- The Comedian -->
+                <div class="hero-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/5/5a/Comedian-Watchmen.png" alt="The Comedian" class="hero-img">
+                    <div class="hero-name">The Comedian</div>
+                    <p class="hero-quote">"Tu humor único nos enseñó que hasta en los momentos difíciles, siempre se puede sonreír."</p>
+                </div>
+
+                <!-- Spiderman -->
+                <div class="hero-card">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/2/2c/Spider-ManPoster.jpg" alt="Spiderman" class="hero-img">
+                    <div class="hero-name">Spiderman</div>
+                    <p class="hero-quote">"Con gran poder viene gran responsabilidad, y la tuya fue dejarnos tu ejemplo."</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. MEMORIAS CON FIREBASE -->
+    <section class="memory-section">
+        <div class="memory-container">
+            <h2 class="section-title">Recuerdos con Emiliano</h2>
+            
+            <!-- Formulario -->
+            <form id="memoryForm">
+                <div class="form-group">
+                    <label for="authorName">Tu Nombre</label>
+                    <input type="text" id="authorName" placeholder="¿Quién escribe?" required>
+                </div>
+                <div class="form-group">
+                    <label for="memoryText">Tu Recuerdo</label>
+                    <textarea id="memoryText" placeholder="Comparte un momento con Emiliano..." required></textarea>
+                </div>
+                <button type="submit" id="submitBtn">Guardar Recuerdo</button>
+            </form>
+
+            <!-- Lista de Memorias -->
+            <div class="memories-list">
+                <div class="section-subtitle">Todos los Recuerdos</div>
+                <div id="memoriesContainer">
+                    <div class="loading">Cargando recuerdos...</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>En memoria de Emiliano Rendon</p>
+        <p style="margin-top:10px; color:#333;">© 2026</p>
+    </footer>
+
+    <!-- FIREBASE SDK -->
+    <script type="module">
+        // Importar Firebase
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        // ============================================
+        // *** CONFIGURACIÓN DE FIREBASE ---
+        // ============================================
+        const firebaseConfig = {
+            apiKey: "AIzaSyAlvRV5RpKoHlBXh8LPurAZ6Hb_oBGMCOI",
+            authDomain: "emiliano-memorium.firebaseapp.com",
+            projectId: "emiliano-memorium",
+            storageBucket: "emiliano-memorium.firebasestorage.app",
+            messagingSenderId: "474884994959",
+            appId: "1:474884994959:web:22be8f724eab97f602bdfa",
+            measurementId: "G-PMDXXQNE3S"
+        };
+
+        // Inicializar Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // 1. Cargar memorias al iniciar
+        document.addEventListener('DOMContentLoaded', () => {
+            loadMemories();
+        });
+
+        // 2. Guardar nueva memoria
+        document.getElementById('memoryForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const authorInput = document.getElementById('authorName');
+            const textInput = document.getElementById('memoryText');
+            const submitBtn = document.getElementById('submitBtn');
+
+            const author = authorInput.value;
+            const text = textInput.value;
+            const date = new Date().toLocaleDateString('es-ES', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            });
+
+            // Desactivar botón mientras guarda
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Guardando...';
+
+            try {
+                // Guardar en Firebase
+                await addDoc(collection(db, "memorias"), {
+                    author: author,
+                    text: text,
+                    date: date,
+                    createdAt: new Date()
+                });
+
+                // Limpiar formulario
+                authorInput.value = '';
+                textInput.value = '';
+
+                // Recargar memorias
+                await loadMemories();
+
+                alert('¡Gracias! Tu recuerdo ha sido guardado.');
+            } catch (error) {
+                console.error("Error al guardar: ", error);
+                alert('Hubo un error al guardar. Intenta de nuevo.');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Guardar Recuerdo';
+            }
+        });
+
+        // 3. Función para cargar todas las memorias
+        async function loadMemories() {
+            const container = document.getElementById('memoriesContainer');
+            container.innerHTML = '<div class="loading">Cargando recuerdos...</div>';
+
+            try {
+                // Obtener memorias de Firebase, ordenadas por fecha
+                const q = query(collection(db, "memorias"), orderBy("createdAt", "desc"));
+                const querySnapshot = await getDocs(q);
+
+                if (querySnapshot.empty) {
+                    container.innerHTML = '<p style="text-align:center; color:#555; padding:30px;">Aún no hay recuerdos. ¡Sé el primero en escribir uno!</p>';
+                    return;
+                }
+
+                // Generar HTML para cada memoria
+                let html = '';
+                querySnapshot.forEach((doc) => {
+                    const memory = doc.data();
+                    html += `
+                        <div class="memory-card">
+                            <p class="memory-text">${escapeHtml(memory.text)}</p>
+                            <div class="memory-meta">
+                                <span class="memory-author">${escapeHtml(memory.author)}</span>
+                                <span>${memory.date}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+
+                container.innerHTML = html;
+            } catch (error) {
+                console.error("Error al cargar: ", error);
+                container.innerHTML = '<p style="text-align:center; color:#555;">Error al cargar los recuerdos. Intenta de nuevo.</p>';
+            }
+        }
+
+        // 4. Función para evitar inyección de código
+        function escapeHtml(text) {
+            const map = {
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#039;'
+            };
+            return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+        }
+    </script>
+
+</body>
+</html>
